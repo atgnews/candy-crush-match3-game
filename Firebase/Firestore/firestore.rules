@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users can only read/write their own data
+    match /users/{userId} {
+      allow read, write: if request.auth.uid == userId;
+      allow read: if false; // Block reads from other users
+      
+      // User subcollections
+      match /{document=**} {
+        allow read, write: if request.auth.uid == userId;
+      }
+    }
+
+    // Levels are public read, admin write only
+    match /levels/{levelId} {
+      allow read: if true;
+      allow write: if request.auth.token.admin == true;
+    }
+
+    // Teams: members can read/write
+    match /teams/{teamId} {
+      allow read: if request.auth.uid in resource.data.Members;
+      allow write: if request.auth.uid == resource.data.LeaderId;
+      
+      match /{document=**} {
+        allow read, write: if request.auth.uid in get(/databases/$(database)/documents/teams/$(teamId)).data.Members;
+      }
+    }
+
+    // Leaderboards are public read
+    match /leaderboards/{document=**} {
+      allow read: if true;
+      allow write: if false; // Only server writes
+    }
+
+    // Transactions require auth, users can only read their own
+    match /transactions/{transactionId} {
+      allow read: if request.auth.uid == resource.data.UserId;
+      allow create: if request.auth.uid != null && request.auth.uid == request.resource.data.UserId;
+      allow write: if false; // Only server writes
+    }
+
+    // Suspicious activity: admin only
+    match /suspicious_activity/{document=**} {
+      allow read, write: if request.auth.token.admin == true;
+    }
+  }
+}
