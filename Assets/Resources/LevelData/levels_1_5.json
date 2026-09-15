@@ -1,0 +1,79 @@
+{
+  "levels": [
+    {
+      "levelId": 1,
+      "world": 1,
+      "episode": 1,
+      "type": "Jelly",
+      "difficulty": "Easy",
+      "moveLimit": 30,
+      "timeLimit": 0,
+      "targetScores": [5000, 10000, 15000],
+      "description": "Clear all jelly squares",
+      "allowedBoosters": ["lollipop", "striped"],
+      "specialGoals": ["Clear jelly squares"],
+      "gridData": [],
+      "blockers": []
+    },
+    {
+      "levelId": 2,
+      "world": 1,
+      "episode": 2,
+      "type": "Ingredient",
+      "difficulty": "Easy",
+      "moveLimit": 25,
+      "timeLimit": 0,
+      "targetScores": [6000, 12000, 18000],
+      "description": "Collect 5 cherries and 5 hazelnuts",
+      "allowedBoosters": ["lollipop"],
+      "specialGoals": ["Collect ingredients"],
+      "gridData": [],
+      "blockers": []
+    },
+    {
+      "levelId": 3,
+      "world": 1,
+      "episode": 3,
+      "type": "Timed",
+      "difficulty": "Easy",
+      "moveLimit": 0,
+      "timeLimit": 60,
+      "targetScores": [8000, 15000, 22000],
+      "description": "Score as much as possible in 60 seconds",
+      "allowedBoosters": ["striped", "colorBomb"],
+      "specialGoals": ["Timed challenge"],
+      "gridData": [],
+      "blockers": []
+    },
+    {
+      "levelId": 4,
+      "world": 1,
+      "episode": 4,
+      "type": "Order",
+      "difficulty": "Medium",
+      "moveLimit": 20,
+      "timeLimit": 0,
+      "targetScores": [7000, 14000, 21000],
+      "description": "Collect 10 red candies and 10 blue candies",
+      "allowedBoosters": ["lollipop"],
+      "specialGoals": ["Collect specific candies"],
+      "gridData": [],
+      "blockers": []
+    },
+    {
+      "levelId": 5,
+      "world": 1,
+      "episode": 5,
+      "type": "Jelly",
+      "difficulty": "Medium",
+      "moveLimit": 25,
+      "timeLimit": 0,
+      "targetScores": [9000, 18000, 27000],
+      "description": "Clear all jelly. Watch out for chocolate blockers!",
+      "allowedBoosters": ["lollipop", "striped", "colorBomb"],
+      "specialGoals": ["Avoid chocolate spread"],
+      "gridData": [],
+      "blockers": ["Chocolate", "Chocolate", "Chocolate"]
+    }
+  ]
+}
